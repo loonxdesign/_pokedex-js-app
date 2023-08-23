@@ -1,3 +1,5 @@
+// Exercise 1.2
+
 let pokemonList = [];
 pokemonList = [
     {
@@ -40,3 +42,25 @@ pokemonList = [
         abilities: ['Static', 'Lightningrod']
     }
 ]
+
+// Exercise 1.3 PART 01
+/*
+let text = "";
+let i = 0;
+for (;pokemonList[i];){
+  text = text + " " + pokemonList[i].name + " (height: " + pokemonList[i].height + ")" + "<br><br>";
+  i++;
+}
+document.write(text);
+*/
+
+for (let i = 0;i < pokemonList.length; i++){
+    document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")" + "<br><br>");
+}
+
+
+// Exercise 1.3 PART 03
+
+if (pokemonList[i].height >'0.6'){
+document.write(+ " – Wow, that\'s big!");
+}
