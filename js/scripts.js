@@ -47,6 +47,7 @@ pokemonList = [
 
 for (let i = 0;i < pokemonList.length; i++){
     document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")" + "<br><br>");
+    // if a pokemon's height is greater than 0.6 – add text
     if (pokemonList[i].height >'0.6'){
         document.write(" – Wow, that\'s big!" + "<br><br>");
         }
