@@ -57,3 +57,20 @@ for (let i = 0; i < pokemonList.length; i++) {
         document.write('<p>' + pokemonInfo + '</p>');
     }
 } 
+
+// Exercise 1.4 
+
+function divide(dividend, divisor){
+    if (divisor === 0){
+        return 'You’re trying to divide by zero.';
+    }
+    else{
+        let result = dividend/divisor;
+        return result;
+    }
+}
+
+document.write('<p>' + divide(4, 2) + '</p>');
+document.write('<p>' + divide(7, 0) + '</p>');
+document.write('<p>' + divide(1, 4) + '</p>');
+document.write('<p>' + divide(12, -3) + '</p>');
