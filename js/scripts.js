@@ -6,7 +6,7 @@ pokemonList = [
         name: 'Bulbasaur',
         type: ['Grass', 'Poison'],
         species: 'Seed Pokémon',
-        height: '0.7',
+        height: 0.7,
         abilities: ['Chlorophyll', 'Overgrow']
     },
 
@@ -14,7 +14,7 @@ pokemonList = [
         name: 'Charmander',
         type: ['Fire'],
         species: 'Lizard Pokémon',
-        height: '0.6',
+        height: 0.6,
         abilities: ['Blaze', 'Solar-Power']
     },
 
@@ -22,7 +22,7 @@ pokemonList = [
         name: 'Squirtle',
         type: ['Water'],
         species: 'Young Turtle Pokémon',
-        height: '0.5',
+        height: 0.5,
         abilities: ['Rain-Dish', 'Torrent']
     },
 
@@ -30,7 +30,7 @@ pokemonList = [
         name: 'Pidgey',
         type: ['Flying', 'Normal'],
         species: 'Small Bird Pokémon',
-        height: '0.3',
+        height: 0.3,
         abilities: ['Keen-Eye', 'Tangled-Feet', 'Big-Pecks']
     },
 
@@ -38,19 +38,22 @@ pokemonList = [
         name: 'Pikachu',
         type: ['Electric'],
         species: 'Mouse Pokémon',
-        height: '0.4',
+        height: 0.4,
         abilities: ['Static', 'Lightningrod']
     }
 ]
 
 // Exercise 1.3
 
-for (let i = 0;i < pokemonList.length; i++){
-    document.write('<span class="pokelist">' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')' + '</span>');
-    
+for (let i = 0; i < pokemonList.length; i++) {
+    let pokemonInfo = pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')'
+
     // if a pokemon's height is greater than 0.6 – add text
-    if (pokemonList[i].height >'0.6'){
-        document.write('<span class="message"> – Wow, that\'s big!</span>');
-        }
-    } 
-    
+    if (pokemonList[i].height > 0.6) {
+        document.write(pokemonInfo + '<span class="message">' + ' – Wow, that\'s big!' + '</span>');
+    }
+
+    else {
+        document.write('<p>' + pokemonInfo + '</p>');
+    }
+} 

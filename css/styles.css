@@ -6,11 +6,6 @@ body {
     line-height: 1.5;
   } 
 
-  .pokelist {
-    display: block;
-    margin-top: 20px;
-  }
-
   .message {
-    display: inline-block;
+    display: inline;
   }
