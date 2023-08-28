@@ -4,4 +4,13 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.5;
+  } 
+
+  .pokelist {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .message {
+    display: inline-block;
   }

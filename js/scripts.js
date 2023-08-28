@@ -46,11 +46,11 @@ pokemonList = [
 // Exercise 1.3
 
 for (let i = 0;i < pokemonList.length; i++){
-    document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")" + "<br><br>");
+    document.write('<span class="pokelist">' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')' + '</span>');
     
     // if a pokemon's height is greater than 0.6 – add text
     if (pokemonList[i].height >'0.6'){
-        document.write(" – Wow, that\'s big!" + "<br><br>");
+        document.write('<span class="message"> – Wow, that\'s big!</span>');
         }
     } 
     
