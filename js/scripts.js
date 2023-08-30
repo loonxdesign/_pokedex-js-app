@@ -74,3 +74,5 @@ document.write('<p>' + divide(4, 2) + '</p>');
 document.write('<p>' + divide(7, 0) + '</p>');
 document.write('<p>' + divide(1, 4) + '</p>');
 document.write('<p>' + divide(12, -3) + '</p>');
+
+// TASK RESULT: https://replit.com/@loonxdesign/CalculatorTask-Result#script.js
