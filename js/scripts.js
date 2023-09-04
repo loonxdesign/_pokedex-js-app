@@ -72,7 +72,7 @@ pokemonRepository.getAll().forEach(function(pokemon){
     }
   })
 
-// How do I call the add-function correctly?
+// How do I call the add-function correctly and add some value to pokemonList?
 // document.write(pokemonRepository.add('fish'));
 
 /*
