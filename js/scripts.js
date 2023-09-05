@@ -74,7 +74,7 @@ pokemonRepository.getAll().forEach(function(pokemon){
 
 
 
-// Comments as a test
+
 
 
 // ----------------------- ARCHIVE EXERCISES -----------------------  
