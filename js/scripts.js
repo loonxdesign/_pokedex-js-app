@@ -50,13 +50,13 @@ function getAll() {
   }
 
 function add(pokemon) {
-    pokemonList.push(pokemon);
-  }
+        pokemonList.push(pokemon);
+    }
 
 
 return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
   };
 
 })();
@@ -72,26 +72,9 @@ pokemonRepository.getAll().forEach(function(pokemon){
     }
   })
 
-// How do I call the add-function correctly and add some value to pokemonList?
-// document.write(pokemonRepository.add('fish'));
-
-/*
-// Exercise 1.5
-// PART 01
-pokemonList.forEach(function(pokemon){
-    if (pokemon.height > 0.6) {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '<span class="message">' + ' – Wow, that\'s big!' + '</span>' + '</p>');
-    }
-
-    else {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')'  + '</p>');
-    }
-  })
-*/
 
 
-
-
+// Comments as a test
 
 
 // ----------------------- ARCHIVE EXERCISES -----------------------  
@@ -130,3 +113,18 @@ document.write('<p>' + divide(1, 4) + '</p>');
 document.write('<p>' + divide(12, -3) + '</p>');
 */
 // TASK RESULT: https://replit.com/@loonxdesign/CalculatorTask-Result#script.js
+
+
+/*
+// Exercise 1.5
+// PART 01
+pokemonList.forEach(function(pokemon){
+    if (pokemon.height > 0.6) {
+        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '<span class="message">' + ' – Wow, that\'s big!' + '</span>' + '</p>');
+    }
+
+    else {
+        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')'  + '</p>');
+    }
+  })
+*/
