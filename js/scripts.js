@@ -3,76 +3,94 @@ let pokemonRepository = (function () {
 
 
 
-pokemonList = [
-    {
-        name: 'Bulbasaur',
-        type: ['Grass', 'Poison'],
-        species: 'Seed Pokémon',
-        height: 0.7,
-        abilities: ['Chlorophyll', 'Overgrow']
-    },
+    pokemonList = [
+        {
+            name: 'Bulbasaur',
+            type: ['Grass', 'Poison'],
+            species: 'Seed Pokémon',
+            height: 0.7,
+            abilities: ['Chlorophyll', 'Overgrow']
+        },
 
-    {
-        name: 'Charmander',
-        type: ['Fire'],
-        species: 'Lizard Pokémon',
-        height: 0.6,
-        abilities: ['Blaze', 'Solar-Power']
-    },
+        {
+            name: 'Charmander',
+            type: ['Fire'],
+            species: 'Lizard Pokémon',
+            height: 0.6,
+            abilities: ['Blaze', 'Solar-Power']
+        },
 
-    {
-        name: 'Squirtle',
-        type: ['Water'],
-        species: 'Young Turtle Pokémon',
-        height: 0.5,
-        abilities: ['Rain-Dish', 'Torrent']
-    },
+        {
+            name: 'Squirtle',
+            type: ['Water'],
+            species: 'Young Turtle Pokémon',
+            height: 0.5,
+            abilities: ['Rain-Dish', 'Torrent']
+        },
 
-    {
-        name: 'Pidgey',
-        type: ['Flying', 'Normal'],
-        species: 'Small Bird Pokémon',
-        height: 0.3,
-        abilities: ['Keen-Eye', 'Tangled-Feet', 'Big-Pecks']
-    },
+        {
+            name: 'Pidgey',
+            type: ['Flying', 'Normal'],
+            species: 'Small Bird Pokémon',
+            height: 0.3,
+            abilities: ['Keen-Eye', 'Tangled-Feet', 'Big-Pecks']
+        },
 
-    {
-        name: 'Pikachu',
-        type: ['Electric'],
-        species: 'Mouse Pokémon',
-        height: 0.4,
-        abilities: ['Static', 'Lightningrod']
+        {
+            name: 'Pikachu',
+            type: ['Electric'],
+            species: 'Mouse Pokémon',
+            height: 0.4,
+            abilities: ['Static', 'Lightningrod']
+        }
+    ]
+
+    function getAll() {
+        return pokemonList;
     }
-]
 
-function getAll() {
-    return pokemonList;
-  }
+    function add(pokemon) {
+        console.log('pokemon: ', pokemon);
+        if (typeof pokemon === 'object') {
+            const attributes = Object.keys(pokemon);
+            const listOfExpectedKeys = ['name', 'type', 'species', 'height', 'abilities'];
+            const hasValidAttributes = attributes.every((item) =>
+                listOfExpectedKeys.includes(item), 
+            );
 
-function add(pokemon) {
-        pokemonList.push(pokemon);
+            if(hasValidAttributes) {
+                pokemonList.push(pokemon);
+            }
+        }
     }
 
 
 return {
     add: add,
     getAll: getAll,
-  };
+};
 
-})();
+}) ();
 
 //PART 02
-pokemonRepository.getAll().forEach(function(pokemon){
+pokemonRepository.getAll().forEach(function (pokemon) {
     if (pokemon.height > 0.6) {
         document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '<span class="message">' + ' – Wow, that\'s big!' + '</span>' + '</p>');
     }
 
     else {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')'  + '</p>');
+        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '</p>');
     }
-  })
+})
 
 
+pokemonRepository.add({
+    name: 'test',
+    type: ['type01', 'type02'],
+    species: 'new species',
+    height: 0.5,
+    abilities: ['a', 'b']
+});
 
 
 
@@ -90,7 +108,7 @@ for (let i = 0; i < pokemonList.length; i++) {
     else {
         document.write('<p>' + pokemonInfo + '</p>');
     }
-} 
+}
 */
 
 
