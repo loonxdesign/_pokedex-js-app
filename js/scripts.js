@@ -55,35 +55,55 @@ let pokemonRepository = (function () {
             const attributes = Object.keys(pokemon);
             const listOfExpectedKeys = ['name', 'type', 'species', 'height', 'abilities'];
             const hasValidAttributes = attributes.every((item) =>
-                listOfExpectedKeys.includes(item), 
+                listOfExpectedKeys.includes(item),
             );
 
-            if(hasValidAttributes) {
+            if (hasValidAttributes) {
                 pokemonList.push(pokemon);
             }
         }
     }
 
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('poke-button');
+        listItem.appendChild(button);
+        pokemonList.appendChild(listItem);
+        // Call EventListener Function – Console Pokemon Object
+        buttonEventListener(button, pokemon);
+    }
 
-return {
-    add: add,
-    getAll: getAll,
-};
+function showDetails(pokemon) {
+    console.log(pokemon);
+}
 
-}) ();
+function buttonEventListener (button, pokemon) {
+    // Event Listener for Button
+    button.addEventListener('click', function (event) {
+        showDetails(pokemon);
+      });
+}
 
-//PART 02
+    return {
+        add: add,
+        getAll: getAll,
+        addListItem: addListItem,
+        showDetails: showDetails,
+        buttonEventListener: buttonEventListener
+    };
+
+})();
+
 pokemonRepository.getAll().forEach(function (pokemon) {
-    if (pokemon.height > 0.6) {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '<span class="message">' + ' – Wow, that\'s big!' + '</span>' + '</p>');
-    }
-
-    else {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '</p>');
-    }
-})
+    pokemonRepository.addListItem(pokemon)
+});
 
 
+
+// Exercise 1.5 Bonus Task
 pokemonRepository.add({
     name: 'test',
     type: ['type01', 'type02'],
@@ -144,4 +164,24 @@ pokemonList.forEach(function(pokemon){
         document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')'  + '</p>');
     }
   })
+
+  //PART 02
+pokemonRepository.getAll().forEach(function (pokemon) {
+    if (pokemon.height > 0.6) {
+        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '<span class="message">' + ' – Wow, that\'s big!' + '</span>' + '</p>');
+    }
+
+    else {
+        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '</p>');
+    }
+})
+
+// Bonus Task
+pokemonRepository.add({
+    name: 'test',
+    type: ['type01', 'type02'],
+    species: 'new species',
+    height: 0.5,
+    abilities: ['a', 'b']
+});
 */

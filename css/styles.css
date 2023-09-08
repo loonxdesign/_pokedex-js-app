@@ -1,11 +1,33 @@
 body {
-    margin-top: 120px;
-    color: #121212;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-  } 
+  margin-top: 120px;
+  color: #121212;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
 
-  .message {
-    display: inline;
-  }
+.message {
+  display: inline;
+}
+
+.poke-button {
+  font-family: inherit;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9b53ff;
+  border: 2px solid #9b53ff;
+  background-color: transparent;
+  padding: 10px 20px;
+  margin: 40px auto 0;
+  transition-duration: 0.5s;
+  transition-property: color border;
+}
+
+.poke-button:hover,
+.poke-button:focus,
+.poke-button:active {
+  color: #121212;
+  border: 2px solid #121212;
+  cursor: pointer;
+}
