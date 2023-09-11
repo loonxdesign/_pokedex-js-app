@@ -1,66 +1,23 @@
 
 let pokemonRepository = (function () {
 
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-
-    pokemonList = [
-        {
-            name: 'Bulbasaur',
-            type: ['Grass', 'Poison'],
-            species: 'Seed Pokémon',
-            height: 0.7,
-            abilities: ['Chlorophyll', 'Overgrow']
-        },
-
-        {
-            name: 'Charmander',
-            type: ['Fire'],
-            species: 'Lizard Pokémon',
-            height: 0.6,
-            abilities: ['Blaze', 'Solar-Power']
-        },
-
-        {
-            name: 'Squirtle',
-            type: ['Water'],
-            species: 'Young Turtle Pokémon',
-            height: 0.5,
-            abilities: ['Rain-Dish', 'Torrent']
-        },
-
-        {
-            name: 'Pidgey',
-            type: ['Flying', 'Normal'],
-            species: 'Small Bird Pokémon',
-            height: 0.3,
-            abilities: ['Keen-Eye', 'Tangled-Feet', 'Big-Pecks']
-        },
-
-        {
-            name: 'Pikachu',
-            type: ['Electric'],
-            species: 'Mouse Pokémon',
-            height: 0.4,
-            abilities: ['Static', 'Lightningrod']
-        }
-    ]
 
     function getAll() {
         return pokemonList;
     }
 
     function add(pokemon) {
-        console.log('pokemon: ', pokemon);
-        if (typeof pokemon === 'object') {
-            const attributes = Object.keys(pokemon);
-            const listOfExpectedKeys = ['name', 'type', 'species', 'height', 'abilities'];
-            const hasValidAttributes = attributes.every((item) =>
-                listOfExpectedKeys.includes(item),
-            );
-
-            if (hasValidAttributes) {
-                pokemonList.push(pokemon);
-            }
+        if (
+            typeof pokemon === 'object' &&
+            'name' in pokemon &&
+            'detailsUrl' in pokemon
+        ) {
+            pokemonList.push(pokemon);
+        } else {
+            console.log('pokemon is not correct');
         }
     }
 
@@ -76,45 +33,122 @@ let pokemonRepository = (function () {
         buttonEventListener(button, pokemon);
     }
 
-function showDetails(pokemon) {
-    console.log(pokemon);
-}
+    function showDetails(pokemon) {
+        loadDetails(pokemon).then(function () {
+            console.log(pokemon);
+        });
+    }
 
-function buttonEventListener (button, pokemon) {
-    // Event Listener for Button
-    button.addEventListener('click', function (event) {
-        showDetails(pokemon);
-      });
-}
+    function buttonEventListener(button, pokemon) {
+        // Event Listener for Button
+        button.addEventListener('click', function (event) {
+            showDetails(pokemon);
+        });
+    }
+
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    }
+
+    function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (details) {
+            // Now we add the details to the item
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = details.types;
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
 
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
         showDetails: showDetails,
-        buttonEventListener: buttonEventListener
+        buttonEventListener: buttonEventListener,
+        loadList: loadList,
+        loadDetails: loadDetails
     };
 
 })();
 
-pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon)
+
+
+pokemonRepository.loadList().then(function () {
+    // Now the data is loaded!
+    pokemonRepository.getAll().forEach(function (pokemon) {
+        pokemonRepository.addListItem(pokemon)
+    });
 });
 
 
 
-// Exercise 1.5 Bonus Task
-pokemonRepository.add({
-    name: 'test',
-    type: ['type01', 'type02'],
-    species: 'new species',
-    height: 0.5,
-    abilities: ['a', 'b']
-});
 
 
 
 // ----------------------- ARCHIVE EXERCISES -----------------------  
+// Exercise 1.2
+    /*
+        pokemonList = [
+            {
+                name: 'Bulbasaur',
+                type: ['Grass', 'Poison'],
+                species: 'Seed Pokémon',
+                height: 0.7,
+                abilities: ['Chlorophyll', 'Overgrow']
+            },
+    
+            {
+                name: 'Charmander',
+                type: ['Fire'],
+                species: 'Lizard Pokémon',
+                height: 0.6,
+                abilities: ['Blaze', 'Solar-Power']
+            },
+    
+            {
+                name: 'Squirtle',
+                type: ['Water'],
+                species: 'Young Turtle Pokémon',
+                height: 0.5,
+                abilities: ['Rain-Dish', 'Torrent']
+            },
+    
+            {
+                name: 'Pidgey',
+                type: ['Flying', 'Normal'],
+                species: 'Small Bird Pokémon',
+                height: 0.3,
+                abilities: ['Keen-Eye', 'Tangled-Feet', 'Big-Pecks']
+            },
+    
+            {
+                name: 'Pikachu',
+                type: ['Electric'],
+                species: 'Mouse Pokémon',
+                height: 0.4,
+                abilities: ['Static', 'Lightningrod']
+            }
+        ]
+    */
+
+        
 // Exercise 1.3
 /*
 for (let i = 0; i < pokemonList.length; i++) {
