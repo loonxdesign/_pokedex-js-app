@@ -6,6 +6,12 @@ body {
   line-height: 1.5;
 }
 
+h1 {
+  font-family: inherit;
+  font-size: 40px;
+  line-height: 1.2;
+}
+
 .poke-button {
   font-family: inherit;
   font-weight: 900;
