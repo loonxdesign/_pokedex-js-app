@@ -31,6 +31,10 @@ let pokemonRepository = (function () {
         pokemonList.appendChild(listItem);
         // Call EventListener Function – Console Pokemon Object
         buttonEventListener(button, pokemon);
+        button.addEventListener('click', () => {
+            showDetails(pokemon);
+       });
+   
     }
 
     function buttonEventListener(button, pokemon) {
@@ -79,13 +83,13 @@ let pokemonRepository = (function () {
     }
 
     function showDetails(pokemon) {
-        //showModal(pokemon);
         loadDetails(pokemon).then(function () {
+            showModal(pokemon);
             console.log(pokemon);
         });
     }
 
-   /*
+
     //ADD SHOW MODAL FUNCTION
     function showModal(pokemon) {
         let modalContainer = document.querySelector('#modal-container');
@@ -109,13 +113,13 @@ let pokemonRepository = (function () {
         imageElement.src = pokemon.imageUrl;
 
         let heightElement = document.createElement('p');
-        heightElement.innerText = 'HEIGHT' + pokemon.height;
+        heightElement.innerText = 'HEIGHT: ' + pokemon.height;
 
         let typesElement = document.createElement('p');
-        heightElement.innerText = 'TYPES' + pokemon.types;
+        typesElement.innerText = 'TYPES: ' + pokemon.types.join(', ');
 
         let abilitiesElement = document.createElement('p');
-        heightElement.innerText = 'ABILITIES' + pokemon.abilities;
+        abilitiesElement.innerText = 'ABILITIES: ' + pokemon.abilities.join(', ');
 
       
         modal.appendChild(closeButtonElement);
@@ -153,11 +157,8 @@ let pokemonRepository = (function () {
         }
       });
     
-      // OPEN MODAL
-      document.querySelector('.poke-button').addEventListener('click', () => {
-        showModal(pokemon);
-      });
-    */
+
+
 
     return {
         add: add,
