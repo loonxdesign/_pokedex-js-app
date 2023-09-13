@@ -33,12 +33,6 @@ let pokemonRepository = (function () {
         buttonEventListener(button, pokemon);
     }
 
-    function showDetails(pokemon) {
-        loadDetails(pokemon).then(function () {
-            console.log(pokemon);
-        });
-    }
-
     function buttonEventListener(button, pokemon) {
         // Event Listener for Button
         button.addEventListener('click', function (event) {
@@ -71,10 +65,99 @@ let pokemonRepository = (function () {
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
             item.types = details.types;
+            item.types = [];
+                for (var i = 0; i < details.types.length; i++) {
+                    item.types.push(details.types[i].type.name);
+                }
+            item.abilities = [];
+                for (var i = 0; i < details.abilities.length; i++) {
+                    item.abilities.push(details.abilities[i].ability.name);
+                }
         }).catch(function (e) {
             console.error(e);
         });
     }
+
+    function showDetails(pokemon) {
+        //showModal(pokemon);
+        loadDetails(pokemon).then(function () {
+            console.log(pokemon);
+        });
+    }
+
+   /*
+    //ADD SHOW MODAL FUNCTION
+    function showModal(pokemon) {
+        let modalContainer = document.querySelector('#modal-container');
+      
+        // Clear all existing modal content
+        modalContainer.innerHTML = '';
+      
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+      
+        //Add Modal Content
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
+      
+        let nameElement = document.createElement('h1');
+        nameElement.innerText = pokemon.name;
+
+        let imageElement = document.createElement('img');
+        imageElement.src = pokemon.imageUrl;
+
+        let heightElement = document.createElement('p');
+        heightElement.innerText = 'HEIGHT' + pokemon.height;
+
+        let typesElement = document.createElement('p');
+        heightElement.innerText = 'TYPES' + pokemon.types;
+
+        let abilitiesElement = document.createElement('p');
+        heightElement.innerText = 'ABILITIES' + pokemon.abilities;
+
+      
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(nameElement);
+        modal.appendChild(imageElement);
+        modal.appendChild(heightElement);
+        modal.appendChild(typesElement);
+        modal.appendChild(abilitiesElement);
+        modalContainer.appendChild(modal);
+      
+        modalContainer.classList.add('is-visible');
+        
+        // Close Modal by clicking outside of the modal
+        modalContainer.addEventListener('click', (e) => {
+          // Since this is also triggered when clicking INSIDE the modal
+          // We only want to close if the user clicks directly on the overlay
+          let target = e.target;
+          if (target === modalContainer) {
+            hideModal();
+          }
+        });
+    
+    }
+
+    // ClOSE MODAL
+    function hideModal() {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.remove('is-visible');
+      }
+    
+      window.addEventListener('keydown', (e) => {
+        let modalContainer = document.querySelector('#modal-container');
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+          hideModal();  
+        }
+      });
+    
+      // OPEN MODAL
+      document.querySelector('.poke-button').addEventListener('click', () => {
+        showModal(pokemon);
+      });
+    */
 
     return {
         add: add,
@@ -96,126 +179,3 @@ pokemonRepository.loadList().then(function () {
         pokemonRepository.addListItem(pokemon)
     });
 });
-
-
-
-
-
-
-// ----------------------- ARCHIVE EXERCISES -----------------------  
-// Exercise 1.2
-    /*
-        pokemonList = [
-            {
-                name: 'Bulbasaur',
-                type: ['Grass', 'Poison'],
-                species: 'Seed Pokémon',
-                height: 0.7,
-                abilities: ['Chlorophyll', 'Overgrow']
-            },
-    
-            {
-                name: 'Charmander',
-                type: ['Fire'],
-                species: 'Lizard Pokémon',
-                height: 0.6,
-                abilities: ['Blaze', 'Solar-Power']
-            },
-    
-            {
-                name: 'Squirtle',
-                type: ['Water'],
-                species: 'Young Turtle Pokémon',
-                height: 0.5,
-                abilities: ['Rain-Dish', 'Torrent']
-            },
-    
-            {
-                name: 'Pidgey',
-                type: ['Flying', 'Normal'],
-                species: 'Small Bird Pokémon',
-                height: 0.3,
-                abilities: ['Keen-Eye', 'Tangled-Feet', 'Big-Pecks']
-            },
-    
-            {
-                name: 'Pikachu',
-                type: ['Electric'],
-                species: 'Mouse Pokémon',
-                height: 0.4,
-                abilities: ['Static', 'Lightningrod']
-            }
-        ]
-    */
-
-        
-// Exercise 1.3
-/*
-for (let i = 0; i < pokemonList.length; i++) {
-    let pokemonInfo = pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')'
-
-    // if a pokemon's height is greater than 0.6 – add text
-    if (pokemonList[i].height > 0.6) {
-        document.write(pokemonInfo + '<span class="message">' + ' – Wow, that\'s big!' + '</span>');
-    }
-
-    else {
-        document.write('<p>' + pokemonInfo + '</p>');
-    }
-}
-*/
-
-
-// Exercise 1.4 
-/*
-function divide(dividend, divisor){
-    if (divisor === 0){
-        return 'You’re trying to divide by zero.';
-    }
-    else{
-        let result = dividend/divisor;
-        return result;
-    }
-}
-
-document.write('<p>' + divide(4, 2) + '</p>');
-document.write('<p>' + divide(7, 0) + '</p>');
-document.write('<p>' + divide(1, 4) + '</p>');
-document.write('<p>' + divide(12, -3) + '</p>');
-*/
-// TASK RESULT: https://replit.com/@loonxdesign/CalculatorTask-Result#script.js
-
-
-/*
-// Exercise 1.5
-// PART 01
-pokemonList.forEach(function(pokemon){
-    if (pokemon.height > 0.6) {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '<span class="message">' + ' – Wow, that\'s big!' + '</span>' + '</p>');
-    }
-
-    else {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')'  + '</p>');
-    }
-  })
-
-  //PART 02
-pokemonRepository.getAll().forEach(function (pokemon) {
-    if (pokemon.height > 0.6) {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '<span class="message">' + ' – Wow, that\'s big!' + '</span>' + '</p>');
-    }
-
-    else {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '</p>');
-    }
-})
-
-// Bonus Task
-pokemonRepository.add({
-    name: 'test',
-    type: ['type01', 'type02'],
-    species: 'new species',
-    height: 0.5,
-    abilities: ['a', 'b']
-});
-*/
