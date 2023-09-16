@@ -2,3 +2,18 @@
   margin-top: 80px; 
   }
 
+.btn,
+.btn-primary {
+  background-color: #9b53ff;
+  border: #9b53ff;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #823be6;
+  border: #823be6;
+}
