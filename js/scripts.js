@@ -9,6 +9,22 @@ let pokemonRepository = (function () {
         return pokemonList;
     }
 
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    }
+
     function add(pokemon) {
         if (
             typeof pokemon === 'object' &&
@@ -25,26 +41,10 @@ let pokemonRepository = (function () {
         let pokemonList = $('.list-group');
         let listItem = $('<li></li>');
         listItem.addClass('list-group-item');
-        let button = $('<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"></button>');
+        let button = $('<button class="btn btn-primary" data-toggle="modal" data-target="#pokemonModal"></button>');
         button.innerText = pokemon.name;
         listItem.append(button);
-        pokemonList.append(listItem);   
-    }
-
-    function loadList() {
-        return fetch(apiUrl).then(function (response) {
-            return response.json();
-        }).then(function (json) {
-            json.results.forEach(function (item) {
-                let pokemon = {
-                    name: item.name,
-                    detailsUrl: item.url
-                };
-                add(pokemon);
-            });
-        }).catch(function (e) {
-            console.error(e);
-        })
+        pokemonList.append(listItem); 
     }
 
     function loadDetails(item) {
