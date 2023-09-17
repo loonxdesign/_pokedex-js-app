@@ -21,7 +21,9 @@ let pokemonRepository = (function () {
                 add(pokemon);
             });
         }).catch(function (e) {
+            /* eslint-disable no-console */
             console.error(e);
+            /* eslint-disable no-console */
         })
     }
 
@@ -33,7 +35,9 @@ let pokemonRepository = (function () {
         ) {
             pokemonList.push(pokemon);
         } else {
+            /* eslint-disable no-console */
             console.log('pokemon is not correct');
+            /* eslint-disable no-console */
         }
     }
 
