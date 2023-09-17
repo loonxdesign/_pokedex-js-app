@@ -6,11 +6,17 @@ Your users should be able to view a list of data and see more details for a give
 # Project dependencies
 
 • HTML
+
 • CSS
+
 • JavaScript ES6
+
 • Promise polyfill
+
 • Fetch polyfill
+
 • jQuery
+
 • Bootstrap
 
 # Which API the project uses
