@@ -41,7 +41,10 @@ let pokemonRepository = (function () {
         let pokemonList = $('.list-group');
         let listItem = $('<li></li>');
         listItem.addClass('list-group-item');
-        let button = $('<button class="btn btn-primary" data-toggle="modal" data-target="#pokemonModal"></button>');
+        let button = $('<button></button>');
+        button.addClass('btn', 'btn-primary');
+        button.attr('data-toggle', 'modal');
+        button.attr('data-target', '#pokemonModal');
         button.innerText = pokemon.name;
         listItem.append(button);
         pokemonList.append(listItem); 
@@ -90,7 +93,9 @@ let pokemonRepository = (function () {
         //Add Modal Content
         let nameElement = $('<h1>' + pokemon.name + '</h1>');
 
-        let imageElement = $('<img class="modal-img" style="70%">');
+        let imageElement = $('<img>');
+        imageElement.addClass('modal-img');
+        imageElement.attr('style', '70%')
         imageElement.src = pokemon.imageUrl;
 
         let heightElement = $('<p>' + 'HEIGHT: ' + pokemon.height + '</p>');
