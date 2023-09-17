@@ -3,8 +3,16 @@ To build a small web application with HTML, CSS, and JavaScript that loads data 
 
 Your users should be able to view a list of data and see more details for a given data item on demand – write a small Pokédex app to display a list of Pokémon.
 
-# How to get the project running
+# Project dependencies
 
-# Project dependencies (e.g., JavaScript version, ESLint rules)
+• HTML
+• CSS
+• JavaScript ES6
+• Promise polyfill
+• Fetch polyfill
+• jQuery
+• Bootstrap
 
 # Which API the project uses
+
+https://pokeapi.co/api/v2/pokemon/?limit=151
