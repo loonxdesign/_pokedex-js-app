@@ -49,13 +49,13 @@ let pokemonRepository = (function () {
         button.addClass('btn', 'btn-primary');
         button.attr('data-toggle', 'modal');
         button.attr('data-target', '#pokemonModal');
-        button.innerText = pokemon.name;
+        button.text(pokemon.name);
         listItem.append(button);
-        pokemonList.append(listItem); 
-        //button.on('click', function() {
-            showDetails(pokemon);
-       // });
-    }
+        pokemonList.append(listItem);
+        button.click(function() {
+        showDetails(pokemon);
+        });
+        }
 
     function loadDetails(item) {
         let url = item.detailsUrl;
@@ -104,8 +104,7 @@ let pokemonRepository = (function () {
 
         let imageElement = $('<img>');
         imageElement.addClass('modal-img');
-        imageElement.attr('style', '70%')
-        imageElement.src = pokemon.imageUrl;
+        imageElement.attr('src', pokemon.imageUrl);
 
         let heightElement = $('<p>' + 'HEIGHT: ' + pokemon.height + '</p>');
 

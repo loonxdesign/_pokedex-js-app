@@ -1,11 +1,17 @@
 .page-container {
-  margin-top: 80px; 
-  }
+  margin-top: 80px;
+}
+
+.list-group {
+  text-align: center;
+}
 
 .btn,
 .btn-primary {
+  color: #ffffff;
   background-color: #9b53ff;
   border: #9b53ff;
+  margin: 10px;
 }
 
 .btn:hover,
@@ -14,6 +20,11 @@
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
+  color: #ffffff;
   background-color: #823be6;
   border: #823be6;
+}
+
+.modal-dialog {
+  margin-top: 80px;
 }
