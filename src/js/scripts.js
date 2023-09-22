@@ -94,7 +94,7 @@ let pokemonRepository = (function () {
     //ADD SHOW MODAL FUNCTION
     function showModal(pokemon) {
         let modalBody = $('.modal-body')
-        let modalTitle = $('.modal.title')
+        let modalTitle = $('.modal-title')
         let modalHeader = $('.modal-header')
 
         // Clear all existing modal content

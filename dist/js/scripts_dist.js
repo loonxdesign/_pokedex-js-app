@@ -34,7 +34,7 @@ let pokemonRepository = (function () {
             let n, o, i, a, p, l, r
             ;(e = t),
                 (n = $('.modal-body')),
-                (o = $('.modal.title')),
+                (o = $('.modal-title')),
                 $('.modal-header'),
                 o.empty(),
                 n.empty(),
