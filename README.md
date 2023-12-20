@@ -19,7 +19,7 @@ Users should be able to view a list of data and see more details for a given dat
 
 • Bootstrap
 
-# Which API the project uses
+# API the project uses
 
 https://pokeapi.co/api/v2/pokemon/?limit=151
 
